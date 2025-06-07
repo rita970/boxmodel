@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Interactive BOGO Boxes</title>
+<meta charset="UTF-8">
+<style>
+body {
+background-color: #1a1a1a;
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 20px;
+display: flex;
+justify-content: center;
+}
+.card {
+background-color: white;
+width: 340px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+h1 {
+text-align: center;
+color: #e91e63;
+margin-bottom: 20px;
+}
+.option-box {
+border: 1px solid #ddd;
+border-radius: 6px;
+padding: 25px;
+margin-bottom: 15px;
+position: relative;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.option-box:hover {
+border-color: #e91e63;
+}
+.option-box input[type="radio"] {
+margin-right: 1px;
+}
+.discount {
+background-color: #ff7494;
+color: white;
+padding: 2px 6px;
+font-size: 11px;
+border-radius: 3px;
+margin-left: 6px;
+}
+.most-popular {
+position: absolute;
+top: -10px;
+right: -10px;
+background: #ff4081;
+color: #fff;
+font-size: 10px;
+padding: 3px 6px;
+border-radius: 3px;
+}
+.expandable {
+display: none;
+margin-top: 12px;
+}
+.expanded .expandable {
+display: block;
+}
+select {
+margin: 5px 5px 5px 0;
+padding: 6px;
+font-size: 14px;
+}
+.total {
+margin-top: 10px;
+font-weight: bold;
+color: #e91e63;
+}
+.cart-btn {
+width: 100%;
+margin-top: 12px;
+padding: 12px;
+background: #ff4081;
+color: white;
+border: none;
+border-radius: 6px;
+font-size: 16px;
+cursor: pointer;
+}
+.cart-btn:hover {
+background-color: #e91e63;
+}
+.strike {
+color: gray;
+text-decoration: line-through;
+font-size: 12px;
+margin-left: 4px;
+}
+.price-line {
+margin-top: 5px;
+}
+.ml {
+margin-left: 20px;
+
+}
+.float-right {
+float:right;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>YAY! It's BOGO</h1>
+<div class="option-box" onclick="selectOption(this)">
+<input type="radio" name="unit">
+1 Unit <span class="discount">10% Off</span><br>
+<span class="ml">Standard Price</span>
+<div class="price-line float-right">$10.00 USD<br><span class="strike">$24.00 USD</span></div>
+<div class="expandable ml">
+<span class="ml">Size</span>
+<span class="ml">Colour</span>
+<div>
+<label>#1</label>
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+<select>
+<option>Black</option>
+<option>White</option>
+<option>Blue</option>
+</select>
+</div>
+<div>
+<label>#2</label>
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+<select>
+<option>Colour</option>
+<option>Red</option>
+<option>Green</option>
+</select>
+</div>
+</div>
+</div>
+<div class="option-box" onclick="selectOption(this)">
+<input type="radio" name="unit">
+2 Unit <span class="discount">20% Off</span>
+<div class="most-popular">MOST POPULAR</div>
+<div class="price-line float-right">$18.00 USD<br><span class="strike">$48.00 USD</span></div>
+<div class="expandable ml">
+<span class="ml">Size</span>
+<span class="ml">Colour</span>
+<div>
+<label>#1</label>
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+<select>
+<option>Black</option>
+<option>White</option>
+<option>Blue</option>
+</select>
+</div>
+<div>
+<label>#2</label>
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+<select>
+<option>Colour</option>
+<option>Red</option>
+<option>Green</option>
+</select>
+</div>
+</div>
+</div>
+<div class="option-box" onclick="selectOption(this)">
+<input type="radio" name="unit">
+3 Unit <span class="discount">30% Off</span>
+<div class="price-line float-right">$24.00 USD<br><span class="strike">$72.00 USD</span>
+</div>
+<div class="expandable ml">
+<span class="ml">Size</span>
+<span class="ml">Colour</span>
+<div>
+<label>#1</label>
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+<select>
+<option>Black</option>
+<option>White</option>
+<option>Blue</option>
+</select>
+</div>
+<div>
+<label>#2</label>
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+<select>
+<option>Colour</option>
+<option>Red</option>
+<option>Green</option>
+</select>
+</div>
+</div>
+</div>
+<div class="total">Free Delivery &nbsp;&nbsp; Total: $18.00 USD</div>
+<button class="cart-btn">+ Add to Cart</button>
+<div>
+<p class="float-right">@ Powered by pumper</p>
+</div>
+</div>
+<script>
+function selectOption(element) {
+const allBoxes = document.querySelectorAll('.option-box');
+allBoxes.forEach(box => {
+box.classList.remove('expanded');
+box.querySelector('input[type="radio"]').checked = false;
+});
+element.classList.add('expanded');
+element.querySelector('input[type="radio"]').checked = true;
+}
+</script>
+</body>
+</html>
